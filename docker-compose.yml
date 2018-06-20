@@ -1,0 +1,36 @@
+version: "3"
+services:
+  photomod:
+    image: photomod:latest
+    ports: 
+      - 1337:1337
+    networks:
+      - webnet
+    command: 
+      bash -c 'npm run build && npm run server'
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+  component-proxy:
+    image: component-proxy:latest
+    ports:
+      - 3003:3003
+    command:
+      bash -c "npm start"
+  db:
+    image: postgres
+    volumes:
+    - pgdata:/var/lib/postgresql/data
+    networks:
+      - webnet
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: photos
+volumes:
+  pgdata:
+networks:
+  webnet:

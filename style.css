@@ -1,0 +1,44 @@
+body{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+margin-left: 14px;
+font-family: lato;
+}
+.small{
+  width: auto;
+  height: auto;
+}
+#zoomframe{
+  height: 320px;
+  width: 240px;
+  min-width: 320px;
+  min-width: 240px;
+  margin-top: 9px;
+  top: 0px;
+  left: 380px;
+  z-index: 1;
+  position: absolute;
+}
+#root{
+  min-height: 100px;
+  display: flex;  
+  padding-right: 15px;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+#descriptions{
+
+  display: flex;
+  flex-basis: 60%;
+  align-content: flex-start;
+  min-height: 100px;
+}
+#questions{
+  display: flex;
+  min-width: 100%;
+  align-content: center;
+
+}
+
+
