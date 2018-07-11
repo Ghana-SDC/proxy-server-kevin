@@ -7,19 +7,19 @@ const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 app.use(cors());
-app.options('*', cors());
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.options('', cors());
+app.use(express.static(path.join(__dirname, './static')));
 
-const clientBundles = './client/dist/services';
+const clientBundles = './static/services';
 const serverBundles = './templates/services';
-const serviceConfig = require('../service-config.json');
-const services = require('../loader.js')(clientBundles, serverBundles, serviceConfig);
+const serviceConfig = require('./service-config.json');
+const services = require('./loader.js')(clientBundles, serverBundles, serviceConfig);
 
 const React = require('react');
 const ReactDom = require('react-dom/server');
-const Layout = require('../templates/layout');
-const App = require('../templates/app');
-const Scripts = require('../templates/scripts');
+const Layout = require('./templates/layout');
+const App = require('./templates/app');
+const Scripts = require('./templates/scripts');
 
 const renderComponents = (components, props = {}) => {
   return Object.keys(components).map(item => {
@@ -28,8 +28,9 @@ const renderComponents = (components, props = {}) => {
   });
 };
 
-app.get('/items/:id', function(req, res) {
+app.get('/', function(req, res) {
   let components = renderComponents(services, {itemid: req.params.id});
+  console.log(components);
   res.end(Layout(
     'Proxy',
     App(...components),

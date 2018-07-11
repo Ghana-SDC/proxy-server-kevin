@@ -7,7 +7,7 @@ module.exports = (title, body, scripts) => `
     <title>${title}</title>
   </head>
   <body>
-  ${body}
+    ${body}
   </body>
   ${scripts}
   </html>

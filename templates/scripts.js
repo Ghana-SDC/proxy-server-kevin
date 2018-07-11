@@ -1,6 +1,6 @@
 module.exports = (items) => `
-<script src="/lib/react.development.js"></script>
-<script src="/lib/react-dom.development.js"></script>
+<script src="/lib/react.production.min.js"></script>
+<script src="/lib/react-dom.production.min.js"></script>
 
 ${items.map(item => {
   return `<script src="/services/${item}.js"></script>`;
