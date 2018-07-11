@@ -13,6 +13,7 @@ const loadBundle = function(cache, item, filename) {
 const fetchBundles = (path, services, suffix = '', require = false) => {
   Object.keys(services).forEach(item => {
     const filename = `${path}/${item}${suffix}.js`;
+    console.log(filename);
     exists(filename)
       .then(() => {
         require ? loadBundle(services, item, filename) : null;
