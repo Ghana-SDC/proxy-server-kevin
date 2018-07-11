@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slatherin/Jamison-Proxy-Server.git"
+    "url": "git+https://github.com/Ghana-SDC/proxy-server-kevin.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/slatherin/Jamison-Proxy-Server/issues"
+    "url": "https://github.com/Ghana-SDC/proxy-server-kevin/issues"
   },
-  "homepage": "https://github.com/slatherin/Jamison-Proxy-Server#readme",
+  "homepage": "https://github.com/Ghana-SDC/proxy-server-kevin#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
