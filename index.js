@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const parser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
@@ -9,6 +10,8 @@ const axios = require('axios');
 // app.use(morgan('dev'));
 app.use(cors());
 app.options('', cors());
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './static')));
 
 const clientBundles = './static/services';
@@ -58,9 +61,8 @@ app.post('/api/reviews/', (req, res) => {
     title: req.body.title,
     review: req.body.review,
     helpful_count: Number(req.body.helpful_count),
-    product_id: Number(req.body.product_id),
-    verified:  req.body.verified === 'true' ? true : false,
-    updated_at: new Date(Date.now()).toISOString()
+    productId: Number(req.body.productId),
+    verified:  req.body.verified
   };
   axios.post('http://52.87.249.24:8080/api/reviews/', body)
   .then(() => res.send().status(201))
@@ -68,7 +70,7 @@ app.post('/api/reviews/', (req, res) => {
 });
 
 app.post('/api/product/:name', (req, res) => {
-  axios.post('http://52.87.249.24:8080/api/product/', req.params.name)
+  axios.post('http://52.87.249.24:8080/api/product/' + req.params.name)
   .then(() => res.send().status(201))
   .catch(err => res.send(err).status(404));
 });

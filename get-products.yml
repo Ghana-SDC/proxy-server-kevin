@@ -3,9 +3,11 @@ config:
   http:
     pool: 20
   phases:
-    - duration: 20
-      arrivalRate: 710
+    - duration: 10
+      arrivalRate: 50
 scenarios:
   - flow:
-    - get:
-        url: "/"
+    - loop:
+      - get:
+          url: "/api/product/5b3fec111ee33cb0c583fb4a"
+      count: 10
