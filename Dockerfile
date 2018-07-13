@@ -1,8 +1,12 @@
-FROM node:9
+FROM node:8.11.3-alpine
 RUN mkdir /proxy
-ADD /proxy /proxy
+COPY . /proxy
 WORKDIR /proxy
 RUN npm install
 
-EXPOSE 3003
+EXPOSE 3000
 CMD ["npm", "start"]
+
+
+
+
